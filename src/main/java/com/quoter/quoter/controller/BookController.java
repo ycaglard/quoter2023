@@ -27,10 +27,10 @@ public class BookController {
     BookService bookService;
 
     @GetMapping("/book")
-    public ResponseEntity<String> getBook() throws IOException {//title'a ya da başka alanlara göre de getirilebilir
-        String body = bookService.randomBook();
+    public ResponseEntity<ResultDto> getBook(@RequestParam int range, @RequestParam String urlFormat) throws IOException {//title'a ya da başka alanlara göre de getirilebilir
+        ResultDto res = bookService.randomBook(range, urlFormat);
 
-        return new ResponseEntity<>(body, HttpStatus.OK);
+        return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
     public BookRepository getBookRepository() {

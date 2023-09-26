@@ -8,7 +8,7 @@ import java.io.IOException;
 
 
 public interface BookService {
-    String randomBook() throws IOException;
+    ResultDto randomBook(int range, String urlFormat) throws IOException;
 
 
 }

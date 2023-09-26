@@ -15,15 +15,15 @@ public class  Book implements Serializable {
     private Long id;
     private String name;
     private String description;
-    private String content;
+    private String pictureUrl;
 
     public Book(){
 
     }
-    public Book(String name, String description, String content) {
+    public Book(String name, String description, String pictureUrl) {
         this.name = name;
         this.description = description;
-        this.content = content;
+        this.pictureUrl = pictureUrl;
     }
 
     public Long getId() {
@@ -50,12 +50,12 @@ public class  Book implements Serializable {
         this.description = description;
     }
 
-    public String getContent() {
-        return content;
+    public String getPictureUrl() {
+        return pictureUrl;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
     }
 
     @Override
@@ -64,7 +64,7 @@ public class  Book implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", content='" + content + '\'' +
+                ", pictureUrl='" + pictureUrl + '\'' +
                 '}';
     }
 }
