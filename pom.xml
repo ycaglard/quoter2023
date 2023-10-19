@@ -14,7 +14,7 @@
 	<name>quoter</name>
 	<description>a project to fetch random quote from a random book</description>
 	<properties>
-		<java.version>16.0.1</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>

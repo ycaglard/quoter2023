@@ -6,9 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
-
 public interface BookService {
     ResultDto randomBook(int range, String urlFormat) throws IOException;
-
 
 }
