@@ -16,15 +16,8 @@ export class UserInputComponent {
   constructor(private bookService : BookService) {}
 
   sendData() {
-    console.log('sending data to server')
-    this.bookService.getLine(this.range, this.urlFormat).subscribe(
-          (response:any) => {
-            this.data = response;
-          },
-          (error:any) => {
-            console.error('Error:', error);
-          }
-        );
+    console.log('sending data to server range:' + this.range)
+    this.bookService.getLine(this.range, this.urlFormat)
   }
 
 }

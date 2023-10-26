@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping("/api")
 public class BookController {
@@ -27,7 +26,10 @@ public class BookController {
     BookService bookService;
 
     @GetMapping("/book")
-    public ResponseEntity<ResultDto> getBook(@RequestParam int range, @RequestParam String urlFormat) throws IOException {//title'a ya da başka alanlara göre de getirilebilir
+    @CrossOrigin(origins = "http://localhost:4200")
+    public ResponseEntity<ResultDto> getBook(@RequestParam("range") int range,
+            @RequestParam("urlFormat") String urlFormat)
+            throws IOException {// title'a ya da başka alanlara göre de getirilebilir
         ResultDto res = bookService.randomBook(range, urlFormat);
 
         return new ResponseEntity<>(res, HttpStatus.OK);
