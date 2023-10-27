@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { BookCardComponent } from './book-card/book-card/book-card.component';
 import { UserInputComponent } from './user-input/user-input/user-input.component';
 import { HttpClientModule } from '@angular/common/http'
-import { BookService } from './service/book.service'
+import { BookService } from './service/book.service';
+import { RandomBookComponent } from './random-book/random-book.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     BookCardComponent,
-    UserInputComponent
+    UserInputComponent,
+    RandomBookComponent
 
   ],
   imports: [

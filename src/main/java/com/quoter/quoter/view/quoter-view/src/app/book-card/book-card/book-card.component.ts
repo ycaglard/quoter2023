@@ -11,11 +11,17 @@ import { Subscription } from 'rxjs';
 export class BookCardComponent implements OnDestroy {
   subscription: Subscription = new Subscription()
   bookData : IResponse = {} as IResponse
+  isVisible : Boolean = false;
 
   constructor(private bookService : BookService){
     this.subscription = this.bookService.getData().subscribe((data) => {
       // Handle data received from other components
-      this.bookData = data
+      if(data != null){
+        this.bookData = data
+        this.isVisible = true;
+      }
+      else{ console.log("data null") }
+      
       console.log('bookCardComponentReceived:', data);
     });
   }

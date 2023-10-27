@@ -5,6 +5,7 @@ import { BookCardComponent } from './book-card.component';
 describe('BookCardComponent', () => {
   let component: BookCardComponent;
   let fixture: ComponentFixture<BookCardComponent>;
+  
 
   beforeEach(() => {
     TestBed.configureTestingModule({

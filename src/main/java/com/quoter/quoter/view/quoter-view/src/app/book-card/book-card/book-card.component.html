@@ -1,16 +1,9 @@
-<div class="info-card">
-    <div class="info-header">
-      <h2>John Doe</h2>
-      <p>Web Developer</p>
-    </div>
-    <div class="info-content">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in mauris
-        id metus convallis venenatis.
-      </p>
-      <ul>
-        <li><strong>Email:</strong> john.doe@example.com</li>
-        <li><strong>Phone:</strong> (123) 456-7890</li>
-      </ul>
+<div *ngIf="isVisible" class="book-card">
+    <img src="{{bookData.book.pictureUrl}}" alt="Book Cover" class="book-image">
+    <div class="book-details">
+      <h2 class="book-title">{{bookData.book.name}}</h2>
+      <p class="book-author">deneme</p>
+      <p class="book-description">Book Description Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <blockquote class="book-quote">" {{bookData.line}} "</blockquote>
     </div>
   </div>
