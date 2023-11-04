@@ -1,9 +1,10 @@
 <div *ngIf="isVisible" class="book-card">
-    <img src="{{bookData.book.pictureUrl}}" alt="Book Cover" class="book-image">
+    <img src="{{bookData.urlFormat}}" alt="Book Cover" class="book-image">
     <div class="book-details">
-      <h2 class="book-title">{{bookData.book.name}}</h2>
-      <p class="book-author">deneme</p>
-      <p class="book-description">Book Description Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <h2 class="book-title">{{bookData.title}}</h2>
+      <div class="book-author" *ngFor = "let author of bookData.authors">{{author.name}} , {{author.birth_year}} - {{author.death_year}}
+      
+      </div>
       <blockquote class="book-quote">" {{bookData.line}} "</blockquote>
     </div>
   </div>

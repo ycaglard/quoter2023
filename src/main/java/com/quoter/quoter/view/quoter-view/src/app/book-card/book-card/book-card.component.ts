@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BookService } from '../../service/book.service'
-import { IBook,IResponse } from '../../interface/interfaces';
+import { IBook,IResponse,IAuthor } from '../../interface/interfaces';
 import { Subscription } from 'rxjs';
+
 @Component({
   selector: 'app-book-card',
   templateUrl: './book-card.component.html',
@@ -10,7 +11,7 @@ import { Subscription } from 'rxjs';
 
 export class BookCardComponent implements OnDestroy {
   subscription: Subscription = new Subscription()
-  bookData : IResponse = {} as IResponse
+  bookData : IBook = {} as IBook
   isVisible : Boolean = false;
 
   constructor(private bookService : BookService){
@@ -21,8 +22,6 @@ export class BookCardComponent implements OnDestroy {
         this.isVisible = true;
       }
       else{ console.log("data null") }
-      
-      console.log('bookCardComponentReceived:', data);
     });
   }
   

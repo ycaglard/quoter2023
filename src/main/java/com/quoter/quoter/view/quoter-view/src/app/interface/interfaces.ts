@@ -4,8 +4,21 @@ export interface IResponse {
 }
 
 export interface IBook{
-  id: number
-  name: string
-  description: string
-  pictureUrl: string
+  line:string
+  id:string
+  title:string
+  authors:Array<IAuthor>
+  subjects:Array<ISubject>
+  urlFormat:string
 }
+
+export interface IAuthor{
+  name:string
+  birth_year:string
+  death_year:string
+}
+
+export interface ISubject{
+  name:string
+}
+

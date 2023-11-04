@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 @Entity
-public class  Book implements Serializable {
+public class Book implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
@@ -16,10 +16,12 @@ public class  Book implements Serializable {
     private String name;
     private String description;
     private String pictureUrl;
+    private String authors;
+    private String subjects;
 
-    public Book(){
-
+    public Book() {
     }
+
     public Book(String name, String description, String pictureUrl) {
         this.name = name;
         this.description = description;
@@ -56,6 +58,22 @@ public class  Book implements Serializable {
 
     public void setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
+    }
+
+    public String getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(String authors) {
+        this.authors = authors;
+    }
+
+    public String getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(String subjects) {
+        this.subjects = subjects;
     }
 
     @Override

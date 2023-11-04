@@ -1,5 +1,6 @@
 package com.quoter.quoter.controller;
 
+import com.quoter.quoter.dto.BookDto;
 import com.quoter.quoter.dto.ResultDto;
 import com.quoter.quoter.model.Book;
 import com.quoter.quoter.repository.BookRepository;
@@ -27,10 +28,10 @@ public class BookController {
 
     @GetMapping("/book")
     @CrossOrigin(origins = "http://localhost:4200")
-    public ResponseEntity<ResultDto> getBook(@RequestParam("range") int range,
+    public ResponseEntity<BookDto> getBook(@RequestParam("range") int range,
             @RequestParam("urlFormat") String urlFormat)
             throws IOException {// title'a ya da başka alanlara göre de getirilebilir
-        ResultDto res = bookService.randomBook(range, urlFormat);
+        BookDto res = bookService.randomBook(range, urlFormat);
 
         return new ResponseEntity<>(res, HttpStatus.OK);
     }

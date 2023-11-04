@@ -15,7 +15,7 @@ export class BookService {
     
     //currentBook = this.bookSource.asObservable();
     private eventSubject = new BehaviorSubject<any>(undefined);
-    private currentBook : IResponse = {} as IResponse
+    private currentBook : IBook = {} as IBook
     constructor(private http: HttpClient) { }
 
     getLine(range: number, urlFormat:string){
@@ -25,16 +25,16 @@ export class BookService {
 
           // Make the GET request with the parameters
           //responsedan kitabı book'a mapleyip currentbook kuyruğuna paslayacağım
-          this.http.get<IResponse>(this.apiUrl, { params }).subscribe(
+          this.http.get<IBook>(this.apiUrl, { params }).subscribe(
             {
               next: (result) => this.dataSubject.next(result),
               error: (err) => console.error(err),
-              complete: () => console.info('complete') 
+              complete: () => console.info('complete')
             }
           )
     }
 
-    getCurrentBook() : IResponse {
+    getCurrentBook() : IBook {
       return this.currentBook
     }
 
