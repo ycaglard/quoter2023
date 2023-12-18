@@ -1,13 +1,15 @@
 package com.quoter.quoter.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+
 import com.quoter.quoter.model.User;
-import java.util.List;
-import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User, Long> {
-    List<User> findByUsername(String username);
+public interface UserRepository extends JpaRepository<User, Integer> {
+    User findByUsernameOrEmail(String username, String email);
 
-    Optional<User> findById(Long id);
+    boolean existsByUsername(String username);
 
+    boolean existsByemail(String email);
+
+    User findByEmail(String email);
 }
