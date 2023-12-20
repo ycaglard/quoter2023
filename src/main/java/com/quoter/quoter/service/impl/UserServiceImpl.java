@@ -4,6 +4,9 @@ import com.quoter.quoter.model.Role;
 import com.quoter.quoter.repository.RoleRepository;
 import com.quoter.quoter.repository.UserRepository;
 import com.quoter.quoter.service.UserService;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.quoter.quoter.dto.UserDto;
@@ -13,7 +16,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService {
     private UserRepository userRepository;
     private RoleRepository roleRepository;
     private PasswordEncoder passwordEncoder;
@@ -56,6 +59,11 @@ public class UserServiceImpl implements UserService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public User findUserByUsername(String Username) {
+       return userRepository.findByUsername(Username);
+    }
+
     private UserDto mapToUserDto(User user){
         UserDto userDto = new UserDto();
         String[] str = user.getUserName().split(" ");
@@ -70,5 +78,10 @@ public class UserServiceImpl implements UserService {
         Role role = new Role();
         role.setName("ROLE_ADMIN");
         return roleRepository.save(role);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepository.findByUsernameOrEmail(username,username);
     }
 }
