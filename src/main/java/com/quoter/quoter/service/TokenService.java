@@ -18,5 +18,6 @@ import java.util.function.Function;
 
 public interface TokenService {
     void saveToken(ConfirmationToken token);
+    String confirmToken(String token);
 
 }

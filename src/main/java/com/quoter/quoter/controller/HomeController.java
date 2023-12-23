@@ -72,4 +72,9 @@ public class HomeController {
         tokenService.saveToken(token);
         return tokenBody;
     }
+
+    @PostMapping("/confirm")
+    public String registerUser(@RequestBody String token){
+        return tokenService.confirmToken(token);
+    }
 }
