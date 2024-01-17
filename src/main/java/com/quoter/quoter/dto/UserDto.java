@@ -1,14 +1,5 @@
 package com.quoter.quoter.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class UserDto
 {
     private Long id;
@@ -16,6 +7,17 @@ public class UserDto
     private String lastName;
     private String email;
     private String password;
+
+    public UserDto() {
+    }
+
+    public UserDto(Long id, String firstName, String lastName, String email, String password) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+    }
 
     public Long getId() {
         return id;

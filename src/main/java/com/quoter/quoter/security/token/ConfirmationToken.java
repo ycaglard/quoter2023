@@ -1,14 +1,10 @@
 package com.quoter.quoter.security.token;
 
 import com.quoter.quoter.model.User;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-@NoArgsConstructor
 @Entity
 public class ConfirmationToken {
     @Id
@@ -34,6 +30,10 @@ public class ConfirmationToken {
         this.createdAt = createdAt;
         this.expiredAt = expiredAt;
         this.user = user;
+    }
+
+    public ConfirmationToken() {
+
     }
 
     public Long getId() {

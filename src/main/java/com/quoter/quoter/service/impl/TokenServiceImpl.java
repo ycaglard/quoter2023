@@ -3,7 +3,7 @@ package com.quoter.quoter.service.impl;
 import com.quoter.quoter.repository.TokenRepository;
 import com.quoter.quoter.security.token.ConfirmationToken;
 import com.quoter.quoter.service.TokenService;
-import lombok.AllArgsConstructor;
+import com.quoter.quoter.service.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,9 +11,15 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Service
-@AllArgsConstructor
 public class TokenServiceImpl implements TokenService {
     private final TokenRepository tokenRepository;
+
+    private final UserService userService;
+
+    public TokenServiceImpl(TokenRepository tokenRepository, UserService userService) {
+        this.tokenRepository = tokenRepository;
+        this.userService = userService;
+    }
 
     @Override
     public void saveToken(ConfirmationToken token){
@@ -35,6 +41,7 @@ public class TokenServiceImpl implements TokenService {
         }
 
         setConfirmedAt(tokenBody);
+        userService.enableUser(token.getUser().getUserName());
         return "confirmed";
     }
 

@@ -29,6 +29,7 @@ public class User implements UserDetails {
     private String email;
     @Column(nullable = false)
     private String password;
+    private boolean enabled = false;
     @ManyToMany
     @LazyCollection(LazyCollectionOption.FALSE)
     private Set<Role> roles;
@@ -56,6 +57,12 @@ public class User implements UserDetails {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -88,7 +95,7 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return enabled;
     }
 
     public void setPassword(String password) {

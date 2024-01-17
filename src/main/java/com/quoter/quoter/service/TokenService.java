@@ -20,4 +20,5 @@ public interface TokenService {
     void saveToken(ConfirmationToken token);
     String confirmToken(String token);
 
+
 }
