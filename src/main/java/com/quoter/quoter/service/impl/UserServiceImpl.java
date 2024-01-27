@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public void saveUser(UserDto userDto) {
         User user = new User();
-        user.setUserName(userDto.getFirstName() + " " + userDto.getLastName());
+        user.setUsername(userDto.getFirstName() + " " + userDto.getLastName());
         user.setEmail(userDto.getEmail());
         // encrypt the password using spring security
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
@@ -66,7 +66,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     private UserDto mapToUserDto(User user){
         UserDto userDto = new UserDto();
-        String[] str = user.getUserName().split(" ");
+        String[] str = user.getUsername().split(" ");
 
         userDto.setFirstName(str[0]);
         userDto.setLastName(str[1]);

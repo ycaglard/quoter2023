@@ -45,10 +45,10 @@ public class User implements UserDetails {
     public void setName(String name) {
         this.name = name;
     }
-    public String getUserName() {
+    public String getUsername() {
         return username;
     }
-    public void setUserName(String username) {
+    public void setUsername(String username) {
         this.username = username;
     }
     public String getEmail() {
@@ -74,23 +74,18 @@ public class User implements UserDetails {
     }
 
     @Override
-    public String getUsername() {
-        return null;
-    }
-
-    @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override

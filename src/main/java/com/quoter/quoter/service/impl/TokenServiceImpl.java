@@ -41,7 +41,7 @@ public class TokenServiceImpl implements TokenService {
         }
 
         setConfirmedAt(tokenBody);
-        userService.enableUser(token.getUser().getUserName());
+        userService.enableUser(token.getUser().getUsername());
         return "confirmed";
     }
 

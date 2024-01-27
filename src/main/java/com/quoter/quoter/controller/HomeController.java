@@ -14,9 +14,11 @@ import com.quoter.quoter.repository.UserRepository;
 import com.quoter.quoter.security.EmailValidator;
 import com.quoter.quoter.security.token.ConfirmationToken;
 import com.quoter.quoter.service.TokenService;
+import com.quoter.quoter.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,6 +37,9 @@ public class HomeController {
 
     @Autowired
     private TokenService tokenService;
+
+    @Autowired
+    private UserServiceImpl userService;
 
     @PostMapping("/login")
     public ResponseEntity<String> authenticateUser(@RequestBody LoginDTO loginDto) {
@@ -59,7 +64,7 @@ public class HomeController {
         // creating user object
         User user = new User();
         user.setName(signUpDto.getName());
-        user.setUserName(signUpDto.getUsername());
+        user.setUsername(signUpDto.getUsername());
         user.setEmail(signUpDto.getEmail());
         user.setPassword(passwordEncoder.encode(signUpDto.getPassword()));
         Role roles = roleRepository.findByName("ROLE_ADMIN");
@@ -76,5 +81,5 @@ public class HomeController {
         return tokenService.confirmToken(token);
     }
     @GetMapping("/user")
-    public User getUser(@RequestParam String username){ return userRepository.findByUsername(username);}
+    public UserDetails getUser(@RequestParam String username){ return userService.loadUserByUsername(username); }
 }
