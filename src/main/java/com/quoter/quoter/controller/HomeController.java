@@ -13,6 +13,7 @@ import com.quoter.quoter.repository.RoleRepository;
 import com.quoter.quoter.repository.UserRepository;
 import com.quoter.quoter.security.EmailValidator;
 import com.quoter.quoter.security.token.ConfirmationToken;
+import com.quoter.quoter.service.EmailService;
 import com.quoter.quoter.service.TokenService;
 import com.quoter.quoter.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,9 @@ public class HomeController {
 
     @Autowired
     private UserServiceImpl userService;
+
+    @Autowired
+    private EmailService emailService;
 
     @PostMapping("/login")
     public ResponseEntity<String> authenticateUser(@RequestBody LoginDTO loginDto) {
@@ -73,6 +77,9 @@ public class HomeController {
         String tokenBody = UUID.randomUUID().toString();
         ConfirmationToken token  = new ConfirmationToken(tokenBody, LocalDateTime.now(), LocalDateTime.now().plusMinutes(15),user);
         tokenService.saveToken(token);
+        String link = "";//confirmation url with token body
+        emailService.send(signUpDto.getEmail(), emailService.buildEmail(signUpDto.getName(), ));
+
         return tokenBody;
     }
 
