@@ -77,14 +77,14 @@ public class HomeController {
         String tokenBody = UUID.randomUUID().toString();
         ConfirmationToken token  = new ConfirmationToken(tokenBody, LocalDateTime.now(), LocalDateTime.now().plusMinutes(15),user);
         tokenService.saveToken(token);
-        String link = "";//confirmation url with token body
-        emailService.send(signUpDto.getEmail(), emailService.buildEmail(signUpDto.getName(), ));
+        String link = "http://localhost:8080/api/v1/confirm?token="+tokenBody;//confirmation url with token body
+        emailService.send(signUpDto.getEmail(), emailService.buildEmail(signUpDto.getName(), link));
 
         return tokenBody;
     }
 
     @PostMapping("/confirm")
-    public String registerUser(@RequestBody String token){
+    public String registerUser(@RequestParam String token){
         return tokenService.confirmToken(token);
     }
     @GetMapping("/user")
