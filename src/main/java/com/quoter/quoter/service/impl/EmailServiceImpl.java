@@ -27,6 +27,8 @@ public class EmailServiceImpl implements EmailService {
             mimeMessageHelper.setTo(to);
             mimeMessageHelper.setSubject("Confirm your quoter account!");
             mimeMessageHelper.setFrom("yildirimcaglardasdemir@gmail.com");
+
+            mailSender.send(mimeMessage);
         }catch (MessagingException e){
             throw new IllegalStateException("failed to send mail");
         }
